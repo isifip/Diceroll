@@ -12,6 +12,7 @@
 		C74BE9F5279AC2120073EFCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74BE9F4279AC2120073EFCF /* Assets.xcassets */; };
 		C74BE9F8279AC2120073EFCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C74BE9F7279AC2120073EFCF /* Preview Assets.xcassets */; };
 		C74BEA03279AC7480073EFCF /* DiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BEA02279AC7480073EFCF /* DiceResult.swift */; };
+		C74BEA06279AD2CC0073EFCF /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74BEA05279AD2CC0073EFCF /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		C74BE9F4279AC2120073EFCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C74BE9F7279AC2120073EFCF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C74BEA02279AC7480073EFCF /* DiceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceResult.swift; sourceTree = "<group>"; };
+		C74BEA05279AD2CC0073EFCF /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				C74BE9F0279AC2100073EFCF /* DicerollApp.swift */,
 				C74BE9FE279AC7000073EFCF /* View */,
 				C74BE9FF279AC7080073EFCF /* Model */,
+				C74BEA04279AD2B80073EFCF /* Extension */,
 				C74BE9F4279AC2120073EFCF /* Assets.xcassets */,
 				C74BE9F6279AC2120073EFCF /* Preview Content */,
 			);
@@ -84,6 +87,14 @@
 				C74BEA02279AC7480073EFCF /* DiceResult.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C74BEA04279AD2B80073EFCF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C74BEA05279AD2CC0073EFCF /* FileManager-DocumentsDirectory.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +169,7 @@
 			files = (
 				C74BE9F3279AC2100073EFCF /* ContentView.swift in Sources */,
 				C74BEA03279AC7480073EFCF /* DiceResult.swift in Sources */,
+				C74BEA06279AD2CC0073EFCF /* FileManager-DocumentsDirectory.swift in Sources */,
 				C74BE9F1279AC2100073EFCF /* DicerollApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

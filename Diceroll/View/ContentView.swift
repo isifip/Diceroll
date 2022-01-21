@@ -16,6 +16,9 @@ struct ContentView: View {
     
     @State private var feedback = UIImpactFeedbackGenerator(style: .rigid)
     
+    let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedRolls.json")
+    @State private var savedResults = [DiceResult]()
+    
     let columns: [GridItem] = [
         .init(.adaptive(minimum: 60))
     ]
@@ -53,6 +56,7 @@ struct ContentView: View {
             .onReceive(timer) { date in
                 updateDice()
             }
+            .onAppear(perform: load)
         }
     }
     func rollDice() {
@@ -68,6 +72,23 @@ struct ContentView: View {
         }
         feedback.impactOccurred()
         stoppedDice += 1
+        
+        if stoppedDice == numberToRoll {
+            savedResults.insert(currentResult, at: 0)
+            save()
+        }
+    }
+    func load() {
+        if let data = try? Data(contentsOf: savePath) {
+            if let results = try? JSONDecoder().decode([DiceResult].self, from: data) {
+                savedResults = results
+            }
+        }
+    }
+    func save() {
+        if let data = try? JSONEncoder().encode(savedResults) {
+            try? data.write(to: savePath, options: [.atomic, .completeFileProtection])
+        }
     }
 }
 
