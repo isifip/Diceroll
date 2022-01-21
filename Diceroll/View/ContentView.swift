@@ -14,6 +14,8 @@ struct ContentView: View {
     let timer = Timer.publish(every: 0.1, tolerance: 0.1, on: .main, in: .common).autoconnect()
     @State private var stoppedDice = 0
     
+    @State private var feedback = UIImpactFeedbackGenerator(style: .rigid)
+    
     let columns: [GridItem] = [
         .init(.adaptive(minimum: 60))
     ]
@@ -64,6 +66,7 @@ struct ContentView: View {
             if i < 0 { continue }
             currentResult.rolls[i] = Int.random(in: 1...selectedDiceType)
         }
+        feedback.impactOccurred()
         stoppedDice += 1
     }
 }
