@@ -1,9 +1,4 @@
-//
-//  DicerollApp.swift
-//  Diceroll
-//
-//  Created by Irakli Sokhaneishvili on 21.01.22.
-//
+
 
 import SwiftUI
 
