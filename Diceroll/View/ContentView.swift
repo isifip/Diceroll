@@ -6,6 +6,7 @@ struct ContentView: View {
     
     let diceTypes = [4, 6, 8, 10, 12, 20]
     
+    @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
     @AppStorage("selectedDiceType") var selectedDiceType = 6
     @AppStorage("numberToRoll") var numberToRoll = 4
     
@@ -49,8 +50,23 @@ struct ContentView: View {
                                 .padding(5)
                         }
                     }
+                    .accessibilityElement()
+                    .accessibilityLabel("Latest roll: \(currentResult.description)")
                 }
                 .disabled(stoppedDice < currentResult.rolls.count)
+                if savedResults.isEmpty == false {
+                    Section("Previous results") {
+                        ForEach(savedResults) { result in
+                            VStack(alignment: .leading) {
+                                Text("\(result.number) x D\(result.type)")
+                                    .font(.headline)
+                                Text(result.description)
+                            }
+                            .accessibilityElement()
+                            .accessibilityLabel("\(result.number) D\(result.type), \(result.description)")
+                        }
+                    }
+                }
             }
             .navigationTitle("Roller")
             .onReceive(timer) { date in
@@ -61,7 +77,13 @@ struct ContentView: View {
     }
     func rollDice() {
         currentResult = DiceResult(type: selectedDiceType, number: numberToRoll)
-        stoppedDice = -20
+        if voiceOverEnabled {
+            stoppedDice = numberToRoll
+            savedResults.insert(currentResult, at: 0)
+            save()
+        } else {
+            stoppedDice = -20
+        }
     }
     func updateDice() {
         guard stoppedDice < currentResult.rolls.count else { return }
